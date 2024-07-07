@@ -13,13 +13,13 @@ feature_vectors /= np.linalg.norm(feature_vectors, axis=1, keepdims=True)
 similarities = np.dot(feature_vectors, feature_vectors.T)
 kernel_matrix = scores.reshape((item_size, 1)) * similarities * scores.reshape((1, item_size))
 
-print 'kernel matrix generated!'
+print('kernel matrix generated!')
 
 t = time.time()
 result = dpp(kernel_matrix, max_length)
-print 'algorithm running time: ' + '\t' + "{0:.4e}".format(time.time() - t)
+print('algorithm running time: ' + '\t' + "{0:.4e}".format(time.time() - t))
 
 window_size = 10
 t = time.time()
 result_sw = dpp_sw(kernel_matrix, window_size, max_length)
-print 'sw algorithm running time: ' + '\t' + "{0:.4e}".format(time.time() - t)
+print('sw algorithm running time: ' + '\t' + "{0:.4e}".format(time.time() - t))
